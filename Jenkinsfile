@@ -19,8 +19,6 @@ pipeline {
                 echo 'This is a minimal pipeline.'
                 sh '''
                     pwd
-                    BUILD_VERSION=$(mvn help:evaluate -Dexpression=project.version | grep "^[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.?[[:digit:]]{0,3}")'
-                    echo $BUILD_VERSION
                     mvn versions:set-property -Dproperty=revision -DnewVersion=1.0.1
                     mvn package
                 '''
